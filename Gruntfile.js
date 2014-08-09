@@ -87,8 +87,8 @@ module.exports = function ( grunt ) {
     /**
      * The directories to delete when `grunt clean` is executed.
      */
-    clean: [ 
-      '<%= build_dir %>', 
+    clean: [
+      '<%= build_dir %>',
       '<%= compile_dir %>'
     ],
 
@@ -148,6 +148,14 @@ module.exports = function ( grunt ) {
             expand: true
           }
         ]
+      },
+      make_django_assets: {
+          files: [
+              { expand:true, cwd: '<%= build_dir %>', src: '**',
+                  dest: '<%= django_assets_dir %>'},
+              { expand:true, src: '<%= build_dir %>/index.html',
+                  dest: '<%= django_template_dir %>', flatten: true}
+             ]
       }
     },
 
@@ -555,7 +563,7 @@ module.exports = function ( grunt ) {
     'clean', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
-    'karma:continuous' 
+    'copy:make_django_assets', 'karma:continuous'
   ]);
 
   /**
@@ -563,7 +571,8 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js',
+    'uglify', 'index:compile'
   ]);
 
   /**
