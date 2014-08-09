@@ -487,7 +487,7 @@ module.exports = function ( grunt ) {
        */
       html: {
         files: [ '<%= app_files.html %>' ],
-        tasks: [ 'index:build' ]
+        tasks: [ 'index:build', 'copy:make_django_assets' ]
       },
 
       /**
