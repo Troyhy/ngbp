@@ -1,4 +1,4 @@
-angular.module( 'ngBoilerplate.about', [
+angular.module( '{{ app_name }}.about', [
   'ui.router',
   'placeholders',
   'ui.bootstrap'
