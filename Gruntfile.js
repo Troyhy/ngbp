@@ -299,7 +299,7 @@ module.exports = function ( grunt ) {
 
     /**
      * `coffeelint` does the same as `jshint`, but for CoffeeScript.
-     * CoffeeScript is not the default in ngBoilerplate, so we're just using
+     * CoffeeScript is not the default in ding, so we're just using
      * the defaults here.
      */
     coffeelint: {
@@ -498,7 +498,7 @@ module.exports = function ( grunt ) {
           '<%= app_files.atpl %>', 
           '<%= app_files.ctpl %>'
         ],
-        tasks: [ 'html2js' ]
+        tasks: [ 'html2js', 'copy:make_django_assets' ]
       },
 
       /**

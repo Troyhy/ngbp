@@ -15,8 +15,8 @@
     <script type="text/javascript" src="{{ STATIC_URL }}angular/<%= file %>"></script><% }); %>
 {% endblock javascript_library %}
 
-{% block main_content %}
-    <div class="container" ng-app="ngBoilerplate" ng-controller="AppCtrl">
-    <h3>Loading application</h3>
+{% templatetag openblock %}  block main_content {% templatetag closeblock %} 
+    <div ng-app="{{app_name}}" ng-controller="AppCtrl">
+        <h3>Loading application</h3>
     </div>
 {% endblock %}
