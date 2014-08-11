@@ -1,24 +1,25 @@
-{% extends "grid.html" %}
-{% load  sekizai_tags %}
-{% block css %}
+{% templatetag openblock %} extends "grid.html" {% templatetag closeblock %}
+{% templatetag openblock %} load  sekizai_tags {% templatetag closeblock %}
+{% templatetag openblock %} block css {% templatetag closeblock %}
      {{ block.super }}
-     {%  addtoblock "css" %}
+     {% templatetag openblock %}  addtoblock "css" {% templatetag closeblock %}
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}{{app_name}}/<%= file %>" /><% }); %>
+    <link rel="stylesheet" type="text/css" href="{% templatetag openvariable %}STATIC_URL{% templatetag closevariable %}{{app_name}}/<%= file %>" /><% }); %>
     <!-- font awesome from BootstrapCDN -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-     {%  endaddtoblock %}
- {% endblock %}
+     {% templatetag openblock %}  endaddtoblock {% templatetag closeblock %}
+ {% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% block javascript_library %}
+{% templatetag openblock %} block javascript_library {% templatetag closeblock %}
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="{{ STATIC_URL }}{{app_name}}/<%= file %>"></script><% }); %>
-{% endblock javascript_library %}
+    <script type="text/javascript" src="{% templatetag openvariable %}STATIC_URL{% templatetag closevariable %}{{app_name}}/<%= file %>"></script><% }); %>
+    <!-- livereload script, remove from production -->
+{% templatetag openblock %} endblock javascript_library {% templatetag closeblock %}
 
-{% templatetag openblock %}  block main_content {% templatetag closeblock %}
+{% templatetag openblock %}block main_content{% templatetag closeblock %}
     <div ng-app="{{app_name}}" ng-controller="AppCtrl">
         <div ui-view="main">
             <h3>Loading application</h3>
         </div>
     </div>
-{% endblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
