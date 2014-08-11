@@ -4,7 +4,7 @@
      {{ block.super }}
      {%  addtoblock "css" %}
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}angular/<%= file %>" /><% }); %>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}{{app_name}}/<%= file %>" /><% }); %>
     <!-- font awesome from BootstrapCDN -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
      {%  endaddtoblock %}
@@ -12,11 +12,13 @@
 
 {% block javascript_library %}
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="{{ STATIC_URL }}angular/<%= file %>"></script><% }); %>
+    <script type="text/javascript" src="{{ STATIC_URL }}{{app_name}}/<%= file %>"></script><% }); %>
 {% endblock javascript_library %}
 
-{% templatetag openblock %}  block main_content {% templatetag closeblock %} 
+{% templatetag openblock %}  block main_content {% templatetag closeblock %}
     <div ng-app="{{app_name}}" ng-controller="AppCtrl">
-        <h3>Loading application</h3>
+        <div ui-view="main">
+            <h3>Loading application</h3>
+        </div>
     </div>
 {% endblock %}

@@ -9,8 +9,8 @@ module.exports = {
    */
   build_dir: 'build',
   compile_dir: 'bin',
-  django_assets_dir: '../static/angular/',
-  django_template_dir: '../templates/angular/',
+  django_assets_dir: '../static/{{app_name}}/',
+  django_template_dir: '../templates/{{app_name}}/',
 
   /**
    * This is a collection of file patterns that refer to our app code (the
